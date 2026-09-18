@@ -1,0 +1,57 @@
+ -----------------JavaScript Engine----------------- 
+ Browser        || Company       || JavaScript Engine
+----------------||---------------||-----------------------------------------------
+  Firefox	    || Mozilla	     || SpiderMonkey
+  Chrome	    || Google	     || V8
+  Microsoft Edge|| Microsoft	 || V8
+  Safari	    || Apple	     || JavaScriptCore (JSC)
+----------------||---------------||-----------------------------------------------
+
+// Sync==> instant response.   Eg: console.log("Heloo........")
+// Async ==> time taken response Eg : api Fetch(await) , payment, booking, Database connection(any kind of api), upload video 
+
+//===========Node.js Architecture============
+1. Main thread(call stack)
+2. Event loop
+3. Libuv(it manage async task)--> when program is time taken( async tasks) libuv manange all async task and return result to event loop ++++ Data is stored in thread poll
+4. API(Application Program Interface)--> API is use when need request/response between two programs( eg:  DB and nodejs) or when we need Database connection , file system, OS functionality
+
++++++++Strict Synchronous(No hoisting, in one order )+++++++++
+  1. Variable declaration :   // let, const always check, if not found then throw error (in Node.js) ++++++++++++=  but in if we check
+  console.log(a);
+  var a = 10;
+  // undefined (but in browser it is let & const)
+
+  console.log(b);
+  let b = 10;
+  // ReferenceError: b is not defined   
+  
+~~~~~~~~~~~~~~ 6 Phases of Node.js Execution ~~~~~~~~~~~~~~
+1. Timer Phase  
+2. Pending Callbacks Phase  
+3. Idle, Prepare Phase  
+4. Poll Phase  
+5. Check Phase  
+6. Close Callbacks Phase  
+  
+1.Timer Phase: it check timer (set time, set immediate, setInterval, setTimeout, setInterval(setImmediate only in Node.js))
+    Example:-
+      setTimeout(() => {
+        console.log("Timer");
+      }, 0);
+  
+  2.Pending Callbacks Phase: it check pending callbacks (system callbacks) 
+    Example:-
+      const fs = require("fs");
+      fs.readFile("/home/user/file.txt", () => {
+        setTimeout(() => {
+          console.log("Timer");
+        }, 0);
+        setImmediate(() => {
+          console.log("setImmediate");
+        });
+      });
+        3. Idle, Prepare Phase: it check idle, prepare (system callbacks)
+        4. Poll Phase: it check poll (system callbacks)
+        5. Check Phase: it check check (system callbacks)
+        6. Close Callbacks Phase: it check close (system callbacks)   
