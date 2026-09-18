@@ -2372,8 +2372,12 @@ This converts the EventEmitter examples into a realistic backend architecture.
 - [MDN JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ---
+# Repository
 
-# 👨‍💻 Repository
+**Github:** https://github.com/shivv2430/FSD_3rdSem
+---
+
+# 👨‍💻 Teacher Repository
 
 **GitHub:** https://github.com/Zishan21830/Node.js
 
