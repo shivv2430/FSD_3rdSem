@@ -1,0 +1,20 @@
+// Type of  module in node js 
+
+Quick revision table : 
+Type                               	Syntax
+Default	                            import fs from "fs"
+Named	                            import { writeFile } from "fs"
+Multiple named	                    import { readFile, writeFile } from "fs"
+Namespace	                        import * as fs from "fs"
+Default + named	                    import fs, { writeFile } from "fs"
+Named alias	                        import { writeFile as write } from "fs"
+Side-effect	                        import "./app.js"
+Dynamic	                            const fs = await import("fs")
+CommonJS	                        const fs = require("fs")
+CommonJS destructuring	            const { writeFile } = require("fs")
+
+
+// Note : 
+// 1. Default is used when you want to import a single main thing from a module.
+// 2. Named is used when a module exports multiple things and you want to import specific ones.
+// 3. CommonJS is the older way used in Node.js (require/module.exports).
